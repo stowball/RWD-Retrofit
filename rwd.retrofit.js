@@ -1,5 +1,5 @@
 /*
- * RWD Retrofit v1.0
+ * RWD Retrofit v1.1
  * Allows an existing "desktop site" to co-exist with a "responsive site", while also able to serve the desktop site to a different breakpoint on "mobile" - useful for serving the desktop site to tablets, for example
  *
  * Returns an object containing the desktop (rwdRetrofit.desktop) and optional mobile (rwdRetrofit.mobile) media queries as strings for responding to media queries with JS; for example, by using enquire.js (http://wickynilliams.github.com/enquire.js)
@@ -19,15 +19,17 @@
  *
  * Licensed under the MIT license
  */
-var rwdRetrofit = (function() {
+;var rwdRetrofit = (function() {
 	if (!document.querySelector || !document.getElementsByClassName || typeof(document.documentElement.clientWidth) == 'undefined')
 		return;
 
-	var meta = document.querySelector('meta[name="viewport"]');
+	var meta = document.querySelector('meta[name="viewport"]'),
+		desktop = document.getElementsByClassName('rwdretro-desktop'),
+		mobile = document.getElementsByClassName('rwdretro-mobile');
 	
-	if (!meta)
+	if (!meta || desktop.length === 0 || mobile.length === 0)
 		return;
-		
+
 	var	c = 'content',
 		m = 'media',
 		initialContent = meta && meta.getAttribute(c),
@@ -35,8 +37,6 @@ var rwdRetrofit = (function() {
 		duration = 250,
 		supportsOrientationChange = 'onorientationchange' in window,
 		orientationEvent = supportsOrientationChange ? 'orientationchange' : 'resize',
-		desktop = document.getElementsByClassName('rwdretro-desktop'),
-		mobile = document.getElementsByClassName('rwdretro-mobile'),
 		desktopMQ = desktop[0].getAttribute(m),
 		mobileMQ = mobile[0].getAttribute(m),
 		mobileWidth = mobile[0].getAttribute('data-mobile-breakpoint'),
