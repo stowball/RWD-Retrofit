@@ -19,9 +19,11 @@ Requires: cssua.js (http://cssuseragent.org)
 
 3. Reference the new responsive stylesheet with a `<link>` with a relevant media query, eg. `media="all and (max-width: 989px)"` and `class="rwdretro-mobile"`
 
-4. Add an optional `data-mobile-breakpoint="xxx"` attribute to the responsive stylesheet `<link>`, where xxx is the pixel-width that the desktop breakpoint will occur on mobile devices - eg. 768 for iPads and other large tablets
+4. Add an optional `data-breakpoint-width="xxx"` attribute to the desktop stylesheet `<link>`, where xxx is the pixel-width that the desktop breakpoint will occur on mobile devices - eg. 768 for iPads and other large tablets
 
-5. Include cssua.js before rwd.retrofit.min.js
+5. Add an optional `data-viewport-width="xxx"` attribute to the desktop stylesheet `<link>`, where xxx is the pixel width that the desktop viewport will be set to on mobile devices
+
+6. Include cssua.js before rwd.retrofit.min.js
 
 ---
 
