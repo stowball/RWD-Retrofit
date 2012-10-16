@@ -13,7 +13,7 @@ Requires: cssua.js (http://cssuseragent.org)
 
 **Usage:**
 
-1. Set up the viewport with: `<meta name="viewport" content="width=device-width" />`
+1. Set up the viewport with: `<meta name="viewport" content="width=device-width, initial-scale=1" />`
 
 2. Reference the existing desktop stylesheet with a `<link>` with a relevant media query, eg. `media="all and (min-width: 990px)"` and `class="rwdretro-desktop"`
 
