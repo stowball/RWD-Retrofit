@@ -1,5 +1,5 @@
 /*
- * RWD Retrofit v1.6
+ * RWD Retrofit v1.6.1
  * Allows an existing "desktop site" to co-exist with a "responsive site", while also able to serve the desktop site to a different breakpoint on "mobile" - useful for serving the desktop site to tablets, for example
  *
  * Returns an object containing the desktop (rwdRetrofit.desktop) and optional mobile (rwdRetrofit.mobile) media queries as strings for responding to media queries with JS; for example, by using enquire.js (http://wickynilliams.github.com/enquire.js)
@@ -30,7 +30,7 @@
 	if (!meta || desktop.length === 0 || mobile.length === 0)
 		return;
 	
-	var supportsTouch = 'ontouchstart' in window || 'onmsgesturechange' in window,
+	var supportsTouch = 'ontouchstart' in window,
 		content = 'content',
 		media = 'media',
 		initialContent = meta && meta.getAttribute(content),
