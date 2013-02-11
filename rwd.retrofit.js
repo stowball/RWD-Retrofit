@@ -1,5 +1,5 @@
 /*
- * RWD Retrofit v1.6.1
+ * RWD Retrofit v1.7
  * Allows an existing "desktop site" to co-exist with a "responsive site", while also able to serve the desktop site to a different breakpoint on "mobile" - useful for serving the desktop site to tablets, for example
  *
  * Returns an object containing the desktop (rwdRetrofit.desktop) and optional mobile (rwdRetrofit.mobile) media queries as strings for responding to media queries with JS; for example, by using enquire.js (http://wickynilliams.github.com/enquire.js)
@@ -13,7 +13,7 @@
  * 5. Add an optional data-viewport-width="xxx" attribute to the desktop stylesheet <link>, where xxx is the pixel width that the desktop viewport will be set to on mobile devices
  * 6. Add an optional data-debug="true" attribute to the desktop stylesheet <link> to force non-touch devices to use the data-breakpoint-width override
  *
- * Copyright (c) 2012 Izilla Partners Pty Ltd
+ * Copyright (c) 2013 Izilla Partners Pty Ltd
  *
  * http://www.izilla.com.au
  *
@@ -70,22 +70,24 @@
 	mediaQueries.desktop = desktopMQ,
 	mediaQueries.mobile = mobileMQ;
 	
-	if (supportsTouch) {
+	if (supportsTouch || dataDebug === 'true') {
 		for (var i=0; i < desktop.length; i++) {
 			desktop[i].setAttribute(media, desktopMQ);
 		}
 		
-		for (var i=0; i < mobile.length; i++) {
-			mobile[i].setAttribute(media, mobileMQ);
+		for (var j=0; j < mobile.length; j++) {
+			mobile[j].setAttribute(media, mobileMQ);
 		}
-		
+	}
+
+	if (supportsTouch) {
 		function switchViewport() {
 			meta.setAttribute(content, initialContent);
 			window.setTimeout(function() {
 				if (document.documentElement.clientWidth >= breakpointWidth)
 					meta.setAttribute(content, desktopContent);
 			}, duration);
-		}	
+		}
 		
 		switchViewport();
 		window.addEventListener(orientationEvent, switchViewport, false);
