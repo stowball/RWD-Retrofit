@@ -25,4 +25,4 @@ Returns an object containing the desktop (`rwdRetrofit.desktop`) and optional mo
 
 ---
 
-You can see it in action on: http://www.rubik.com.au
+You can see it in action on: http://rwdretrofit.izilla.com.au and http://www.rubik.com.au
